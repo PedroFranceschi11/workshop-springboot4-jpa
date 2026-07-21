@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.plcs2.PLSMC.entities.Category;
 import com.plcs2.PLSMC.entities.Order;
 import com.plcs2.PLSMC.entities.OrderItem;
+import com.plcs2.PLSMC.entities.Payment;
 import com.plcs2.PLSMC.entities.Product;
 import com.plcs2.PLSMC.entities.User;
 import com.plcs2.PLSMC.entities.enums.OrderStatus;
@@ -81,6 +82,10 @@ public class TestConfig implements CommandLineRunner{
 		
 		ordemItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 	}
 	
 	
